@@ -34,9 +34,10 @@ const SignUpForm = () => {
                     <label>Name</label>
                     <input 
                         type="text" 
-                        onChange={formik.handleChange} 
-                        onBlur={formik.handleBlur}
-                        value={formik.values.name} 
+                        // onChange={formik.handleChange} 
+                        // onBlur={formik.handleBlur}
+                        // value={formik.values.name} 
+                        {...formik.getFieldProps("name")}
                         name="name"
                     />
                     {formik.errors.name && formik.touched.name && <div className="error">{formik.errors.name}</div>}
@@ -45,9 +46,10 @@ const SignUpForm = () => {
                     <label>Email</label>
                     <input 
                         type="text" 
-                        onChange={formik.handleChange} 
-                        onBlur={formik.handleBlur}
-                        value={formik.values.email} 
+                        // onChange={formik.handleChange} 
+                        // onBlur={formik.handleBlur}
+                        // value={formik.values.email}
+                        {...formik.getFieldProps("email")} 
                         name="email"
                     />
                     {formik.errors.email && formik.touched.email && <div className="error">{formik.errors.email}</div>}
@@ -56,9 +58,10 @@ const SignUpForm = () => {
                     <label>Password</label>
                     <input 
                         type="text" 
-                        onChange={formik.handleChange} 
-                        onBlur={formik.handleBlur}
-                        value={formik.values.password} 
+                        // onChange={formik.handleChange} 
+                        // onBlur={formik.handleBlur}
+                        // value={formik.values.password} 
+                        {...formik.getFieldProps("password")} 
                         name="password"
                     />
                     {formik.errors.password && formik.touched.password && <div className="error">{formik.errors.password}</div>}
