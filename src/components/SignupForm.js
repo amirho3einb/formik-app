@@ -7,6 +7,7 @@ const initialValues = {
     password: "",
     phoneNumber: "",
     passwordConfirm: "",
+    gender: "",
 }
 
 // step 2
@@ -24,6 +25,7 @@ const validationSchema = Yup.object({
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
       ),
     passwordConfirm: Yup.string().required("Password Confirmation is required").oneOf([Yup.ref("password"), null], "Passwords must match"),
+    gender: Yup.string().required("Gender is required")
 })
 
 
@@ -82,6 +84,26 @@ const SignUpForm = () => {
                         name="passwordConfirm"
                     />
                     {formik.errors.passwordConfirm && formik.touched.passwordConfirm && <div className="error">{formik.errors.passwordConfirm}</div>}
+                </div>
+                <div className="formControl">
+                    <input 
+                        type="radio"
+                        id="0"
+                        name="gender"
+                        value="0"
+                        onChange={formik.handleChange}
+                        checked={formik.values.gender === "0"}
+                    />
+                    <label htmlFor="0">Male</label>
+                    <input 
+                        type="radio"
+                        id="1"
+                        name="gender"
+                        value="1"
+                        onChange={formik.handleChange}
+                        checked={formik.values.gender === "1"}
+                    />
+                    <label htmlFor="1">Female</label>
                 </div>
                 <button type="submit" disabled={!formik.isValid}>submit</button>
             </form>
