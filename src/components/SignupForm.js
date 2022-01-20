@@ -32,6 +32,7 @@ const SignUpForm = () => {
         initialValues,
         onSubmit,
         validationSchema,
+        validateOnMount:true,
     });
  
     return ( 
@@ -82,7 +83,7 @@ const SignUpForm = () => {
                     />
                     {formik.errors.passwordConfirm && formik.touched.passwordConfirm && <div className="error">{formik.errors.passwordConfirm}</div>}
                 </div>
-                <button type="submit">submit</button>
+                <button type="submit" disabled={!formik.isValid}>submit</button>
             </form>
         </div>
      );
