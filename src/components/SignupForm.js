@@ -1,15 +1,7 @@
+import axios from "axios";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from 'yup';
-
-const savedData = {
-    name: "Amirhossein",
-    email: "amir@gmail.com",
-    password: "Amir@123",
-    phoneNumber: "09010384949",
-    passwordConfirm: "Amir@123",
-    gender: "0",
-}
 
 // step 1
 const initialValues = {
@@ -49,6 +41,10 @@ const SignUpForm = () => {
         validateOnMount: true,
         enableReinitialize: true,
     });
+
+    useEffect(()=> {
+        axios.get('http://localhost:3001/users/1').then(res => setFormValues(res.data)).catch(err => console.log(err))
+    }, [])
  
     return ( 
         <div>
@@ -119,7 +115,6 @@ const SignUpForm = () => {
                     <label htmlFor="1">Female</label>
                     {formik.errors.gender && formik.touched.gender && <div className="error">{formik.errors.gender}</div>}
                 </div>
-                <button onClick={() => setFormValues(savedData)}>Load data</button>
                 <button type="submit" disabled={!formik.isValid}>submit</button>
             </form>
         </div>
