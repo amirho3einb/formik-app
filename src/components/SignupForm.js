@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import * as Yup from 'yup';
 import Input from "./common/Input";
+import RadioInput from "./common/RadioInput";
 
 // step 1
 const initialValues = {
@@ -13,6 +14,10 @@ const initialValues = {
     passwordConfirm: "",
     gender: "",
 }
+const radioOptions = [
+    { label: "male", value: "0"},
+    { label: "female", value: "1"}
+];
 
 // step 2
 const onSubmit = (values) => {
@@ -55,27 +60,7 @@ const SignUpForm = () => {
                 <Input formik={formik} name="phoneNumber" label="Phone Number" />
                 <Input formik={formik} name="password" label="Password" type="password"/>
                 <Input formik={formik} name="passwordConfirm" label="Password Confimation" type="password"/>
-                <div className="formControl">
-                    <input 
-                        type="radio"
-                        id="0"
-                        name="gender"
-                        value="0"
-                        onChange={formik.handleChange}
-                        checked={formik.values.gender === "0"}
-                    />
-                    <label htmlFor="0">Male</label>
-                    <input 
-                        type="radio"
-                        id="1"
-                        name="gender"
-                        value="1"
-                        onChange={formik.handleChange}
-                        checked={formik.values.gender === "1"}
-                    />
-                    <label htmlFor="1">Female</label>
-                    {formik.errors.gender && formik.touched.gender && <div className="error">{formik.errors.gender}</div>}
-                </div>
+                <RadioInput formik={formik} radioOptions={radioOptions} name="gender"/>
                 <button type="submit" disabled={!formik.isValid}>submit</button>
             </form>
         </div>
