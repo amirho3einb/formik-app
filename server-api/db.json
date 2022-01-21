@@ -8,7 +8,9 @@
       "phoneNumber": "09010384949",
       "passwordConfirm": "Amir@123",
       "gender": "0",
-      "nationality": "US"
+      "nationality": "US",
+      "intrests": ["React.js"],
+      "terms": false
     }
   ]
 }
