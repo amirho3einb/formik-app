@@ -7,7 +7,8 @@
       "password": "Amir@123",
       "phoneNumber": "09010384949",
       "passwordConfirm": "Amir@123",
-      "gender": "0"
+      "gender": "0",
+      "nationality": "US"
     }
   ]
 }
